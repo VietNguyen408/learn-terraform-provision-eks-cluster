@@ -27,6 +27,10 @@ module "eks" {
       asg_desired_capacity          = 1
     },
   ]
+
+   tags = {
+        "Owner" = "viet.nguyen@syndeno.com"
+      }
 }
 
 data "aws_eks_cluster" "cluster" {

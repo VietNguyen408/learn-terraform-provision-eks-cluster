@@ -5,7 +5,7 @@ variable "region" {
 
 provider "aws" {
   region = var.region
-  shared_credentials_file = "~/.aws/credentials"
+  shared_credentials_file = "/home/viego/.aws/credentials"
 }
 
 data "aws_availability_zones" "available" {}
@@ -34,15 +34,18 @@ module "vpc" {
 
   tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+    "Owner" = "viet.nguyen@syndeno.com"
   }
 
   public_subnet_tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
     "kubernetes.io/role/elb"                      = "1"
+    "Owner" = "viet.nguyen@syndeno.com"
   }
 
   private_subnet_tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
     "kubernetes.io/role/internal-elb"             = "1"
+    "Owner" = "viet.nguyen@syndeno.com"
   }
 }
